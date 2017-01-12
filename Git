@@ -1,0 +1,17 @@
+
+File of git work directory has two status. one is tracked, other is untracked. when you create new file in this work, the new file status is untracked.  
+
+通过 `git status`查看文件处于什么状态， `- s`可以的得到一种更为紧凑的格式输出。   
+
+`git add`是一个多功能命令
+* 开始跟踪一个文件
+* 暂存以修改文件
+
+忽略文件： 可以创建一个`.gitignore`文件  
+
+`git diff`查看以暂存和未暂存的修改, `git diff`默认查看未暂存的文件修改，增加`-- cached`查看已经暂存起来的变化
+
+`git commit -m `+提交信息
+`git commit -a`会跳过暂存区域，自动把所有已跟踪过的文件暂存起来一并提交 这样可以跳过`git add`步骤
+
+ `git pull origin master`
