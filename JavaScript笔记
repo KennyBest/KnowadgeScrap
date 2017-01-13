@@ -1,0 +1,19 @@
+1.随机数 `Math.random()`， 直接调用返回`0~1`之间的数(不会超过1)
+常用的随机数函数
+* 包含区间范围最小值 不包含最大值
+```js
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+```
+* 包含区间两边极值  
+```js
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+```
+
+2.`Date`处理
+> UTC 、GMT 注意 GMT比UTC晚8个小时
+
+year month day hour minute second millisecond构成
