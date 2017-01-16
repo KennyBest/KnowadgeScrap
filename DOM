@@ -79,4 +79,11 @@ BOM ： Brower Object Model（非官方标准 现在大部分浏览器已经支�
     * 获取屏幕的宽高， 返回访客屏幕的宽高。与window的innerWidth和innerHeight获取的是浏览器的宽高。
     * `availWidth` `availHeight` 屏幕宽高 - 屏幕的任务栏高度
     * `colorDepth` 返回显示颜色的位数 （24位 或者 32位）
-    * `pixelDepth`
+    * `pixelDepth`  一般情况跟`colorDepth`相同  
+
+* `Location`对象，用于获取当前页的地址（URL），浏览器的重定向。  
+    * `href` 当前页的网址
+    * `hostname` 网络服务器域名
+    * `pathname` 当前页的路径和文件名
+    * `protocol` 返回当前页遵守的协议（http https）
+    * `assign` 加载新的文档
