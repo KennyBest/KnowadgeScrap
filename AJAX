@@ -1,0 +1,49 @@
+AJAX是什么？AJAX是 Asynchronous JavaScript And XML, 是一个技术，不是一门编程语言。AJAX是基于浏览器内置`XMLHttpRequest`对象和JavaScript以及HTML DOM，AJAX允许网页在场景内用一个网络服务交换数据来异步更新，这也是为什么可以不重新加载就可以更新。   
+
+
+可以干什么？
+1. 无须重新加载就更新网页
+2. 从服务器请求数据
+3. 从服务器接收数据
+4. 在后台发送数据
+
+## XMLHttpRequest
+AJAX的关键就是`XMLHttpRequest`对象，所有最新的浏览器都支持`XMLHttpRequest`对象。(IE7.0之前的不支持)
+
+### 创建XMLHttpRequest对象
+
+```js
+var variable = new XMLHttpRequest();
+
+// 旧版本的IE可以使用ActiveX对象
+// var obj = new ActiveObject("Microsoft.XMLHTTP");
+```  
+出于安全性，最新的浏览器不允许获取跨越域名。
+
+### XMLHttpRequest方法
+
+|方法|功能|  
+|:---|:---|
+|new XMLHttpRequest()| 创建一个新的XMLHttpRequest对象|
+|abort()|取消当前的请求|
+|getAllResponseHeaders()|返回全部头部信息|
+|getResponseHeader()|返回明确的头部信息|
+|open(method, url, async, user, psw)| 单个请求 method：请求方式GET或POST  url: 文件路径 async: true 或 false user： 用户名 可选值 psw：密码 可选值|
+|send()|发送请求 用于GET请求|
+|send(string)|用于POST请求|
+|setRequestHeader()|添加键值对|  
+
+### XMLHttpRequest对象属性
+
+|属性|描述|
+|:|:|
+|onreadystatechange|定义一个函数当readyState发生改变的时候|
+|readyState|XMLHttpRequest状态|
+|responseText|以字符串的形式返回响应数据|
+|responseXML|以XML形式返回响应数据|
+|status|请求状态码|
+|statusText|状态描述语|  
+
+## Apache
+
+本地配置服务器, Mac自带了`Apache`服务，10.8.3之后可以通过命令行打开终端，输入`sudo apachectl start`即可打开。
