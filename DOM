@@ -86,4 +86,48 @@ BOM ： Brower Object Model（非官方标准 现在大部分浏览器已经支�
     * `hostname` 网络服务器域名
     * `pathname` 当前页的路径和文件名
     * `protocol` 返回当前页遵守的协议（http https）
-    * `assign` 加载新的文档
+    * `assign` 加载新的文档  
+
+* `History` 包含浏览器历史
+    * `window.history.back();` 如同点击浏览器中如同返回按钮，加载历史记录中前一个网页地址
+    * `window.history.forward();` 如同向前按钮， 加载下一个  
+
+* `navigator` 访客浏览器信息
+    * `appName` 访客浏览器的名称
+    * `appCodeName` 浏览器的应用编码名称 几乎所有的浏览器都是`Mozilla`
+    * `platform` 浏览器运行的平台
+    * `cookieEnabled` 判断浏览器的cookie是否可用
+    * `language`
+
+* JavaScript有三种提示框 Alert box、 Confirm box、 Prompt box。
+    * Alert box。  只有确定按钮
+      ```js
+      alert(" This is a alert box.");
+      ```  
+
+    * Confirm box。 确定、取消按钮
+      ```js
+      // 会返回boolean类型结果
+      confirm(" This is a Confirm box. It has two button which can be ckicked by user to response differently.");
+      // 点击确定返回true 点击取消会返回false
+      ```  
+
+    * Prompt Box 提示框（带输入框的）
+       ```js
+       /**
+       @param 提示文字
+       @param 默认文字
+       */
+       prompt("Prompt Message", "Default Text");
+       ```  
+  > 在弹出框换行使用`\n`
+
+* 时间处理 可以省略window前缀
+
+    * `var timer = setTimeout(function, milliseconds)` 延迟设置的毫秒后执行函数，在执行之前可以使用`clearTimeout(timer);`来暂停
+
+    * `setInterval(function, nilliseconds)` 重复执行某个函数， 也是通过执行`clearInterval();`来执行的  
+
+* JavaScript Cookies 用来存储用户信息 Cookie是data 存储在电脑的文本文件中， 以键值对的形式，用`;`分割。
+    使用`document.cookie`属性来创建、获取、改变
+    
