@@ -1,0 +1,53 @@
+面向对象设计
+
+面向对象设计（Object-oriented Design， 简称OOD）和面向对象编程（Object-oriented Programming， 简称OOP）到底是什么？
+
+## OOP
+
+面向对象编程是一种思想。
+ * 封装
+ * 继承
+ * 多态
+
+## OOD
+
+面向对象设计是一种原则。SOLID
+
+* SRP The Single Responsibility Principle 单一原则
+* OCP The Open Closed Principle 开闭原则
+* LSP The Liskov Substitution Principle 里氏替换原则
+* ISP The Interface Segregation Principle 接口隔离原则
+* DIP The Dependency Inversion Principle  依赖反转原则
+
+### SRP
+SRP在维基百科上是这样定义的**规定每一个类具有一个单一的功能，并且该功能应该由这个类完全封装起来**。  
+
+#### What is Responsibility?
+响应：同一个主题逻辑操作集合。
+
+
+[文章](https://drive.google.com/file/d/0ByOwmqah_nuGNHEtcU5OekdDMkk/view?pli=1)
+
+### OCP
+维基上这样定义**软件中的对象（类、模块、函数等）应该对于扩展是开放的，但是对于修改是封闭的**。这里其实就是使用继承来达到不修改原类中代码实现基础上扩展原类的行为。
+
+#### 梅耶开闭原则
+一个类一旦创建了，它的实现只应该因错误而修改，新的或者改变的特性应该通过新建不同的类实现。新建的类可以通过继承的方式来重用原类的代码，子类可以根据自己需要来选择是否需要重写父类的接口实现。
+
+#### 多态开闭原则
+倡导对抽象基类的继承，接口定义可以通过继承来重用，但是实现不必重用。
+
+### LSP
+派生类（子类）对象能够替换其基类（超类）对象使用。
+
+### ISP
+指明没有客户应该被迫依赖于它不使用方法。ISP原则的目的是系统接口耦合，从而容易重构，更改和更新部署。
+
+### DIP
+指一种特定的解耦形式，使得高层次的模块不依赖于低层次的模块的实现细节，依赖关系被颠倒，从而使得低层次模块依赖于高层次模块的需求抽象。
+  * 高层次的模块不应该依赖于低层次的模块，两者都应该依赖于抽象接口。
+  * 抽象接口不应该依赖于具体实现。具体实现应该依赖于相同的抽象接口。
+> 在OC里面就是用协议去实现具体的功能操作
+
+## 参考
+[The Principle Of OOD ](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)

@@ -1,0 +1,4 @@
+1. 定义属性不能以new或者copy开头，否则会报
+```
+Property follows Cocoa naming convention for returning 'owned' objects.
+```
