@@ -7,6 +7,10 @@ AJAX是什么？AJAX是 Asynchronous JavaScript And XML, 是一个技术，不�
 3. 从服务器接收数据
 4. 在后台发送数据
 
+## Apache
+
+本地配置服务器, Mac自带了`Apache`服务，10.8.3之后可以通过命令行打开终端，输入`sudo apachectl start`即可打开。
+
 ## XMLHttpRequest
 AJAX的关键就是`XMLHttpRequest`对象，所有最新的浏览器都支持`XMLHttpRequest`对象。(IE7.0之前的不支持)
 
@@ -33,7 +37,7 @@ var variable = new XMLHttpRequest();
 |send(string)|用于POST请求|
 |setRequestHeader()|添加键值对|  
 
-### XMLHttpRequest对象属性
+### Server Response
 
 |属性|描述|
 |:|:|
@@ -42,8 +46,35 @@ var variable = new XMLHttpRequest();
 |responseText|以字符串的形式返回响应数据|
 |responseXML|以XML形式返回响应数据|
 |status|请求状态码|
-|statusText|状态描述语|  
+|statusText|状态描述语|    
 
-## Apache
+readyState状态表
 
-本地配置服务器, Mac自带了`Apache`服务，10.8.3之后可以通过命令行打开终端，输入`sudo apachectl start`即可打开。
+|状态码|描述|
+|:--:|:|  
+|0|请求没有初始化|
+|1|服务连接已建立|
+|2|请求已被接收|
+|3|处理请求|
+|4|请求结束，响应已就绪|
+
+status描述：
+
+|状态码|描述|
+|:--:|:|
+|200|成功 "OK"|
+|403|禁止 "Forbidden"|
+|404|页面未找到 "Page not found"|  
+
+#### Server Response Properties
+
+|Property|Description|
+|:|:|
+|responseText|以字符串的形式获取响应数据|
+|responseXML|以XML的形式获取响应数据|  
+
+#### Server Response Methods
+|Method|Description|
+|:|:|
+|getResponseHeader()|从服务器资源里面返回明确的头部信息|
+|getAllResponseHeaders()|返回所有的头部信息|

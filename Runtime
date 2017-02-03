@@ -1,1 +1,91 @@
-`IMP`是一个函数指针
+## OC常讲的运行时是什么？
+macOS上支持函数和数据结构的Objective-C运行时库
+
+## 数据结构
+
+### SEL
+```Objc
+/// An opaque type that represents a method selector.
+typedef struct objc_selector *SEL;
+```  
+`SEL`是一个指向`struct objc_selector`的指针类型，返回的就是映射到方法的C字符串。
+
+### id
+```Objc
+/// A pointer to an instance of a class.
+/// 一个类实例的指针
+typedef struct objc_object *id;
+```  
+```Objc
+/// Represents an instance of a class.
+struct objc_object {
+    Class isa  OBJC_ISA_AVAILABILITY;
+};
+```
+
+### Class
+```Objc
+/// An opaque type that represents an Objective-C class.
+typedef struct objc_class *Class;
+```  
+`objc_class`结构  
+
+```Objc
+struct objc_class {
+    Class isa  OBJC_ISA_AVAILABILITY;
+
+#if !__OBJC2__
+    Class super_class                                        OBJC2_UNAVAILABLE;
+    const char * name                                         OBJC2_UNAVAILABLE;
+    long version                                             OBJC2_UNAVAILABLE;
+    long info                                                OBJC2_UNAVAILABLE;
+    long instance_size                                       OBJC2_UNAVAILABLE;
+    struct objc_ivar_list * ivars                             OBJC2_UNAVAILABLE;
+    struct objc_method_list ** methodLists                    OBJC2_UNAVAILABLE;
+    struct objc_cache * cache                                 OBJC2_UNAVAILABLE;
+    struct objc_protocol_list * protocols                     OBJC2_UNAVAILABLE;
+#endif
+
+} OBJC2_UNAVAILABLE;
+
+```  
+
+### Method
+
+```Objc
+/// An opaque type that represents a method in a class definition.
+typedef struct objc_method *Method;
+
+```
+`objc_method`存放了方法名、方法参数类型、方法实现。
+```Objc
+struct objc_method {
+    SEL method_name                                          OBJC2_UNAVAILABLE;
+    char * method_types                                       OBJC2_UNAVAILABLE;
+    IMP method_imp                                           OBJC2_UNAVAILABLE;
+}                                                            OBJC2_UNAVAILABLE;
+```
+* 相同名字的方法即使在不同类中定义，它们的方法选择器也相同。
+* `method_types`是一个`char`指针，存储着方法的参数类型和返回值类型
+* `method_imp`指向了方法的实现，本质上是一个函数指针  
+
+### Ivar
+代表类中实例变量的类型。
+```Objc
+typedef struct objc_ivar *Ivar;
+```
+```Objc
+struct objc_ivar {
+    char * ivar_name                                          OBJC2_UNAVAILABLE;
+    char * ivar_type                                          OBJC2_UNAVAILABLE;
+    int ivar_offset                                          OBJC2_UNAVAILABLE;
+#ifdef __LP64__
+    int space                                                OBJC2_UNAVAILABLE;
+#endif
+}          
+```
+### IMP
+
+### Cache
+
+### Property
