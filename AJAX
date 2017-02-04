@@ -1,3 +1,5 @@
+# AJAX
+
 AJAX是什么？AJAX是 Asynchronous JavaScript And XML, 是一个技术，不是一门编程语言。AJAX是基于浏览器内置`XMLHttpRequest`对象和JavaScript以及HTML DOM，AJAX允许网页在场景内用一个网络服务交换数据来异步更新，这也是为什么可以不重新加载就可以更新。   
 
 
@@ -78,3 +80,55 @@ status描述：
 |:|:|
 |getResponseHeader()|从服务器资源里面返回明确的头部信息|
 |getAllResponseHeaders()|返回所有的头部信息|
+
+# JSON
+
+## 简介
+
+`JSON`(JavaScript Object Nonation) 是一种存储和交换数据的语法，**不是语言**，`JSON`是`JavaScript Object
+ Nonation`格式的字符串。
+
+### 交换数据 Exchange Data
+
+浏览器与服务器之间交换数据只能以字符串的形式进行交换。可以将`JavaScript`对象转化为`JSON`，并将`JSON`发送给服务器。同时也可以将从服务器接收到的`JSON`转化为`JavaScript`对象。
+
+## 语法
+
+`JSON`语法是`JavaScript`语法的子集。
+语法：
+* 键值对形式 key:value **`JSON`key必须使用`""`包含起来**
+* 使用`,`分离
+* `{}`代表对象
+* `[]`代表数组
+* `JSON`里面value类型只能是 String number Object array boolean null
+* `JSON`里面字符串只能使用`""`
+
+## 与XML比较
+
+相同点：
+* 可读性强
+* 分等级的
+* 大部分语言可以解析并使用
+* 可以结合`XMLHttpRequest`使用
+
+不同点：
+* `JSON`不需要使用结束标签
+* `JSON`更短
+* `JSON`可以使用数组
+* `JSON`读写更快
+* `XML`需要解析器解析，`JSON`可以直接被解析
+
+## 解析
+
+### parse()
+
+将`JSON`转化为`JavaScript`
+> 这里依据`JSON`数据类型，如果是数组的话，使用parse()解析将返回`JavaScript`数组
+
+### stringify()
+
+将`JavaScript`转化为`JSON`
+
+## JSONP
+
+跨域请求
