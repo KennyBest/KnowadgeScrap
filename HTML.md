@@ -428,4 +428,152 @@ eg： `<span>`，`<a>`，`<img>`。
 
 # 3.HTML5
 
-# 4.HTML5 Canvas
+# 4.HTML5 Graphics
+## 4.1 Canvas
+`<canvas>`元素是唯一绘图的容器，并且必须使用`JavaScript`实际绘图。创建画布:
+```html
+  <canvas id="myCanvas" width="300" height="300" style="border:1px solid #000000;"></canvas>
+```   
+可用于画直线、圆、矩形、绘制文字、图片、渐变层。
+
+```html
+<!--
+      1. 找到画布canvas元素
+      2. 使用getContext()获取内置绘画对象
+      3. 开始绘画
+    -->
+    <script type="text/javascript">
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      // 画直线
+      // moveTo(x,y)定义直线起始坐标
+      ctx.moveTo(0,0);
+      // lineTo(x,y)定义结束坐标
+      ctx.lineTo(300, 300);
+      ctx.stroke();
+
+      // 画圆
+      // beginPath() 开始路径
+      ctx.beginPath();
+      // arc(x,y,r,startangle,endangle) x,y 为圆心点坐标
+      ctx.arc(150,150,40,0,2*Math.PI);
+      ctx.stroke();
+
+      // 写文字
+      /*
+      1. 设置字体
+      2. fillText(text,x,y) -- 实体文字 或者 strokeText(text,x,y) --镂空文字
+      */
+      ctx.font = "30px Arial";
+      // 设置颜色
+      // ctx.fillStyle = "red";
+      // 设置文字模式
+      // ctx.textAlign = "center";
+      ctx.fillText("Hello World",10,50);
+      ctx.strokeText("Hello World",10,90);
+
+      var c2 = document.getElementById('gradient');
+      ctx2 = c2.getContext("2d");
+      // 渐变层
+      // 线性渐变层
+      // var grd = ctx2.createLineGradient(0,0,200,0);
+      // grd.addColorStop(0,"red");
+      // grd.addColorStop(1,"white");
+      // // 渐变层填充
+      // ctx2.strokeStyle = grd;
+      // ctx2.fillRect(10,10,150,80);
+
+      // 放射性渐变层
+      var grd2 = ctx2.cteateRadialGradient(75,50,5,90,60,100);
+      grd2.addColorStop(0,"red");
+      grd2.addColorStop(1,"white");
+
+      ctx2.fillStyle = grd;
+      ctx2.fillRect(10,10,150,80);
+
+      // 绘制图片
+      ctx.drawImage(img,10,10);
+    </script>
+```  
+
+## 4.2 SVG
+  SVG(Scaleable Vector Graphic) 被用来在Web中定义图形的，是W3C推荐的。
+
+  1. rect 矩形
+
+  ```html
+  <!-- 矩形 -->
+      <!-- <rect width="100" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);"> -->
+      <!-- <rect width="100" height="100" style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9;"> -->
+      <!-- 圆角矩形 -->
+      <rect x="0" y="0" rx="10" ry="10" width="100" height="100" style="fill:red;stroke:black;stroke-width:1;opacity:0.5;">
+  ```
+  2. circle 圆
+  ```html
+    <!-- cx,cy为圆点坐标 r为半径 -->
+    <circle cx="50" cy="50" r="50" stroke="lightgray" stroke-width="1" fill="red"/>
+  ```  
+  3. llipse 椭圆   
+  ```html
+  <!--
+        cx: 中心点x坐标
+        cy: 中心点y坐标
+        rx: 水平半径
+        ry: 竖直半径
+      -->
+      <ellipse cx="50" cy="50" rx="47" ry="30" style="fill:yellow;stroke:purple;stroke-width:2"/>
+  ```  
+  可以通过设置不同坐标点与半径来花式使用ellipse  
+
+  4. line 线
+  ```html
+  <!-- line
+      x1,y1:起始点坐标
+      x2,y2:终点坐标
+      -->
+      <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+  ```  
+  5. polygon 多边形
+  ```html
+  <!-- points属性为多边形每个拐点的坐标 -->
+  <polygon points="200,10 250,190 160,210" style="fill:lightgray;stroke:purple;strole-width:1;" />
+  ```  
+  6. polyline 折线  
+  ```html
+  <p><svg width="500" height="180">
+      <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160" style="fill:white;stroke:red;stroke-width:4;" />
+    </svg></p>
+  ```  
+  7. path 路径
+
+  |命令|作用|
+  |: -- :|:|
+  |M|moveto 移动到起点|
+  |L|lineto 连接|
+  |H|horizontal lineto|
+  |V|vertical lineto|
+  |C|cureto|
+  |S|smooth curveto|
+  |Q|quadratic Bezier curve|
+  |T|smooth quadratic Bezier curveto|
+  |A|elliptical Arc|
+  |Z|closepath|  
+
+  ```html
+    <path d="M150 0 L75 200 L225 200 Z" />
+  ```  
+  8. text 文字
+  ```html
+  <!--
+    可以使用tranform属性来旋转文字
+    text可以被tspan标签环绕 包含格式和位置
+  -->
+  <text x="0" y="15" fill="red">Draw Text in SVG</text>
+  ```  
+  9. Stoke属性
+  * stroke 定义了颜色
+  * stroke-width 定义了线的高度
+  * stroke-linecap 定义了两端形状 (butt、round、square)
+  * stroke-dasharray 用来创造虚线
+
+  10. filter 滤镜 -- （清醒了再搞）

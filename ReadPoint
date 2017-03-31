@@ -2,3 +2,26 @@
 ```
 Property follows Cocoa naming convention for returning 'owned' objects.
 ```
+
+2. 设置label高度时不能以字体大小设置高度，当label内容中包含gjyq时底部会被截取一下。
+    设置高度的四种方式:
+
+      ```
+        // 方法1
+        CGSize suggestedSize = [lb sizeThatFits:CGSizeMake(100, 30)];
+
+        // 方法2
+        [lb sizeToFit];
+
+        // 方法3
+        boundsWithSize
+
+        // 方法4
+        sizeWithAttributes
+      ```
+      高度值也不是在字体大小上随意加一个高度值，方法1和方法2 计算出来的高度一样， 方法3和方法4出来的高度一样
+3.  使用`systemLayoutSizeFittingSize:`获取view的约束下的实际高度
+    这里其实分为UIViewController 和 UIView两种情况处理，
+      *  UIViewController中在`-viewDidLayoutSubViews`中可以获取控件的实际`frame`，
+        `-ViewDidLayoutSubViews`的执行顺序晚于`- viewWillAppear`，高于`- viewDidAppear`。
+      *  UIView中可以在`-layoutSubViews`和drawRect中获取
