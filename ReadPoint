@@ -6,7 +6,7 @@ Property follows Cocoa naming convention for returning 'owned' objects.
 2. 设置label高度时不能以字体大小设置高度，当label内容中包含gjyq时底部会被截取一下。
     设置高度的四种方式:
 
-      ```
+      ```OC
         // 方法1
         CGSize suggestedSize = [lb sizeThatFits:CGSizeMake(100, 30)];
 
@@ -25,3 +25,42 @@ Property follows Cocoa naming convention for returning 'owned' objects.
       *  UIViewController中在`-viewDidLayoutSubViews`中可以获取控件的实际`frame`，
         `-ViewDidLayoutSubViews`的执行顺序晚于`- viewWillAppear`，高于`- viewDidAppear`。
       *  UIView中可以在`-layoutSubViews`和drawRect中获取
+
+4. 当你在一个类中同时对一个属性重写setter和getter方法时，此时编译器是不会自动为当前属性创建以`_`开头的实例变量的，所以在setter方法里面使用实例变量将会报错。
+解决方法：手动增加此属性的实例变量
+
+```OC
+@interface Person : NSObject
+
+@property (copy, nonatomic) NSString *name;
+
+@end
+
+@implementation Person {
+    NSString *_name;
+}
+
+- (void)setName:(NSString *)name {
+    _name = name;
+}
+
+- (NSString *)name {
+    return _name;Â
+}
+Â
+@end
+```
+5.
+
+```
+UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+   NSArray *windows = [UIApplication sharedApplication].windows;
+   for (id windowView in windows) {
+       NSString *viewName = NSStringFromClass([windowView class]);
+       if ([@"UIRemoteKeyboardWindow" isEqualToString:viewName]) {
+           window = windowView;
+           break;
+       }
+   }
+
+```
