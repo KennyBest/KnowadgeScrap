@@ -62,5 +62,23 @@ public let SLServiceTypeTencentWeibo: String
     static let updateMainTimer = #selector(ViewController.updateMainTimer)
     static let updateLapTimer = #selector(ViewController.updateLapTimer)
   }
-  ```  
-3.
+  ```
+## 14. SnapchatMenu
+
+  1.
+  ```
+    @available(iOS 5.0, *)
+    open func willMove(toParentViewController parent: UIViewController?)
+  ```
+  2.
+  ```
+    @available(iOS 5.0, *)
+    open func didMove(toParentViewController parent: UIViewController?)
+  ```
+  在子控制器之间切换的时候这两个方法是给UIViewController子类去调用的。如果它们被重写，重写的方法一定要保证调用父类的实现。parent参数在它从其父controller中移除的时候是nil，否则就是最新的父controller。
+
+  `addChildViewController:` 在添加子控制器之前会调用 `[child willMoveToParentViewController: self]`。然而，并不会调用 didMoveToParentViewController:。我们期望 一个容器控制器的子类在子控制器过渡后调用这个回调，或者万一没有转变，及时地调用。
+
+  相似地，`removeFromParentViewController` 也不会在移除之前主动调用[self willMoveToParentViewController: nil]
+
+  这个是容器子类的职责，容器子类一般定义一个方法来通过首次调用addViewController:过渡到一个新的自控制器，然后执行一个转场，最终调用didMoveToParentViewController。在移除的时候不主动调用willMoveTo， 需要手动`[child willMoveToParentViewController:nil]`。
