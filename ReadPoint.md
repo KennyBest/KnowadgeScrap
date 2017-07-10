@@ -109,4 +109,9 @@ var cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier") as U
 |NSURLErrorNetworkConnectionLost(-1005)|网络请求丢失|
 |NSURLErrorNotConnectedToInternet(-1009)|设备不能连接网络|
 |NSURLErrorUserCancelledAuthentication(-1012)|用户取消了认证|
-|NSURLErrorSecureConnectionFailed(-1200)|因为未知的原因安全连接失败|
+|NSURLErrorSecureConnectionFailed(-1200)|因为未知的原因安全连接失败|  
+
+### 11. 导航栏设置为不透明时修改view的起点  
+
+自iOS7.0后，导航栏默认是半透明的，此时整个屏幕的坐标起点是在屏幕的左上角开始。通常会通过设置`edgesForExtendedLayout`为`UIRectEdgeNone`来控制起点从导航栏下面开始计算。那么导航栏不透明的时候坐标系的起点则默认从导航栏下的左上角开始算起。这个时候想让起点依然从整个屏幕的起点开始计算的话可以设置`extendedLayoutIncludesOpaqueBars`为`YES`来实现。
+> `extendedLayoutIncludesOpaqueBars`默认为`NO`，且iOS7.0之后才可使用。
