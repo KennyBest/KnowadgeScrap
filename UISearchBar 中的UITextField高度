@@ -1,0 +1,5 @@
+UISearchBar 中的UITextField高度
+在iOS11.0 --- 36
+11.0之前是  28
+
+UISearchBar的高度在iOS11.0是55， 之前则是44。
