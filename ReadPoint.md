@@ -115,3 +115,5 @@ var cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier") as U
 
 自iOS7.0后，导航栏默认是半透明的，此时整个屏幕的坐标起点是在屏幕的左上角开始。通常会通过设置`edgesForExtendedLayout`为`UIRectEdgeNone`来控制起点从导航栏下面开始计算。那么导航栏不透明的时候坐标系的起点则默认从导航栏下的左上角开始算起。这个时候想让起点依然从整个屏幕的起点开始计算的话可以设置`extendedLayoutIncludesOpaqueBars`为`YES`来实现。
 > `extendedLayoutIncludesOpaqueBars`默认为`NO`，且iOS7.0之后才可使用。
+
+###12. 测试PullRequest
